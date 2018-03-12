@@ -25,7 +25,7 @@ if a license plate ending in 1 or 2 can/can't be on the road at a pre-defined ti
     }
 ```
 
-A usage example of the class to validate if a license plate can/can't be on the road is shown here:
+An usage example of the class to validate if a license plate can/can't be on the road is shown here:
 
 ```java
 PicoPlacaPredictor picoPlacaPredictor = new PicoPlacaPredictor();
