@@ -1,4 +1,7 @@
 # pico-placa-predictor
+
+[![Build Status](https://travis-ci.org/enriquezrene/pico-placa-predictor.svg?branch=master)](https://travis-ci.org/enriquezrene/pico-placa-predictor)
+
 This project has been written in Java using JUnit 5 as testing library.
 
 The main class of this application is `PicoPlacaPredictor` which has the `canBeOnTheRoad(String licensePlateAsString, String date, String time)` method to validate if a license plate can/can't be on the road.
