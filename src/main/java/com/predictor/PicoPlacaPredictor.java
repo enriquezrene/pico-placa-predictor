@@ -30,8 +30,9 @@ public class PicoPlacaPredictor {
         daysWithValidatorsMap.put(DayOfWeek.SUNDAY, new NumberRestrictedValidator(-1));
     }
 
-    public boolean canBeOnTheRoad(LicensePlate licensePlate, String date, String time) {
+    public boolean canBeOnTheRoad(String licensePlateAsString, String date, String time) {
         if (picoPlacaTime.hasRestriction(time)) {
+            LicensePlate licensePlate = new LicensePlate(licensePlateAsString);
             DayOfWeek dayOfWeek = LocalDate.parse(date, DATE_TIME_FORMATTER).getDayOfWeek();
             int lastDigitFromLicensePlate = licensePlate.getLastDigit();
             return !daysWithValidatorsMap.get(dayOfWeek).isNumberRestricted(lastDigitFromLicensePlate);

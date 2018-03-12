@@ -1,6 +1,5 @@
 package com.predictor;
 
-import com.predictor.domain.LicensePlate;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -25,9 +24,7 @@ public class PicoPlacaPredictorTest {
     @ParameterizedTest
     @ValueSource(strings = {"ABC1231", "ABC1232"})
     public void onMondayWithARestrictedTimeCarsWithLicensePlateEndingIn1or2CanNotBeOnTheRoad
-            (String licensePlateAsString) {
-        LicensePlate licensePlate = new LicensePlate(licensePlateAsString);
-
+            (String licensePlate) {
         boolean canBeOnTheRoad = picoPlacaPredictor.canBeOnTheRoad(licensePlate, mondayDate, restrictedTime);
 
         assertFalse(canBeOnTheRoad);
@@ -36,8 +33,7 @@ public class PicoPlacaPredictorTest {
     @ParameterizedTest
     @ValueSource(strings = {"ABC1233", "ABC1234"})
     public void onTuesdayWithARestrictedTimeCarsWithLicensePlateEndingIn3or4CanNotBeOnTheRoad
-            (String licensePlateAsString) throws Exception {
-        LicensePlate licensePlate = new LicensePlate(licensePlateAsString);
+            (String licensePlate) throws Exception {
 
         boolean canBeOnTheRoad = picoPlacaPredictor.canBeOnTheRoad(licensePlate, tuesdayDate, restrictedTime);
 
@@ -47,8 +43,7 @@ public class PicoPlacaPredictorTest {
     @ParameterizedTest
     @ValueSource(strings = {"ABC1235", "ABC1236"})
     public void onWednesdayWithARestrictedTimeCarsWithLicensePlateEndingIn5or6CanNotBeOnTheRoad
-            (String licensePlateAsString) throws Exception {
-        LicensePlate licensePlate = new LicensePlate(licensePlateAsString);
+            (String licensePlate) throws Exception {
 
         boolean canBeOnTheRoad = picoPlacaPredictor.canBeOnTheRoad(licensePlate, wednesdayDate, restrictedTime);
 
@@ -58,8 +53,7 @@ public class PicoPlacaPredictorTest {
     @ParameterizedTest
     @ValueSource(strings = {"ABC1237", "ABC1238"})
     public void onThursdayWithARestrictedTimeCarsWithLicensePlateEndingIn7or8CanNotBeOnTheRoad
-            (String licensePlateAsString) throws Exception {
-        LicensePlate licensePlate = new LicensePlate(licensePlateAsString);
+            (String licensePlate) throws Exception {
 
         boolean canBeOnTheRoad = picoPlacaPredictor.canBeOnTheRoad(licensePlate, thursdayDate, restrictedTime);
 
@@ -69,8 +63,7 @@ public class PicoPlacaPredictorTest {
     @ParameterizedTest
     @ValueSource(strings = {"ABC1239", "ABC1230"})
     public void onFridayWithARestrictedTimeCarsWithLicensePlateEndingIn9or0CanNotBeOnTheRoad
-            (String licensePlateAsString) throws Exception {
-        LicensePlate licensePlate = new LicensePlate(licensePlateAsString);
+            (String licensePlate) throws Exception {
 
         boolean canBeOnTheRoad = picoPlacaPredictor.canBeOnTheRoad(licensePlate, fridayDate, restrictedTime);
 
@@ -80,8 +73,7 @@ public class PicoPlacaPredictorTest {
     @ParameterizedTest
     @ValueSource(strings = {"ABC1230", "ABC1231", "ABC1232", "ABC1233", "ABC1234", "ABC1235", "ABC1236", "ABC127", "ABC1238", "ABC1239"})
     public void onSaturdayAllTheLicensePlatesCanBeOnTheRoad
-            (String licensePlateAsString) throws Exception {
-        LicensePlate licensePlate = new LicensePlate(licensePlateAsString);
+            (String licensePlate) throws Exception {
 
         boolean canBeOnTheRoad = picoPlacaPredictor.canBeOnTheRoad(licensePlate, saturdayDate, restrictedTime);
 
@@ -91,8 +83,7 @@ public class PicoPlacaPredictorTest {
     @ParameterizedTest
     @ValueSource(strings = {"ABC1230", "ABC1231", "ABC1232", "ABC1233", "ABC1234", "ABC1235", "ABC1236", "ABC127", "ABC1238", "ABC1239"})
     public void onSundayAllTheLicensePlatesCanBeOnTheRoad
-            (String licensePlateAsString) throws Exception {
-        LicensePlate licensePlate = new LicensePlate(licensePlateAsString);
+            (String licensePlate) throws Exception {
 
         boolean canBeOnTheRoad = picoPlacaPredictor.canBeOnTheRoad(licensePlate, sundayDate, restrictedTime);
 
@@ -103,8 +94,7 @@ public class PicoPlacaPredictorTest {
     @ParameterizedTest
     @ValueSource(strings = {"ABC1231", "ABC1232"})
     public void onMondayWithNonRestrictedTimeCarsWithLicensePlateEndingIn1or2CanBeOnTheRoad
-            (String licensePlateAsString) {
-        LicensePlate licensePlate = new LicensePlate(licensePlateAsString);
+            (String licensePlate) {
 
         boolean canBeOnTheRoad = picoPlacaPredictor.canBeOnTheRoad(licensePlate, mondayDate, nonRestrictedTime);
 
@@ -114,8 +104,7 @@ public class PicoPlacaPredictorTest {
     @ParameterizedTest
     @ValueSource(strings = {"ABC1233", "ABC1234"})
     public void onTuesdayWithNonRestrictedTimeCarsWithLicensePlateEndingIn3or4CanBeOnTheRoad
-            (String licensePlateAsString) {
-        LicensePlate licensePlate = new LicensePlate(licensePlateAsString);
+            (String licensePlate) {
 
         boolean canBeOnTheRoad = picoPlacaPredictor.canBeOnTheRoad(licensePlate, tuesdayDate, nonRestrictedTime);
 
@@ -127,9 +116,8 @@ public class PicoPlacaPredictorTest {
     @ValueSource(strings = {tuesdayDate, wednesdayDate, thursdayDate, fridayDate})
     public void licensePlateEndingIn1HaveNoRestrictionsInAnyDayButMonday
             (String dateAsString) {
-        LicensePlate licensePlate = new LicensePlate("ABC1211");
 
-        boolean canBeOnTheRoad = picoPlacaPredictor.canBeOnTheRoad(licensePlate, dateAsString, nonRestrictedTime);
+        boolean canBeOnTheRoad = picoPlacaPredictor.canBeOnTheRoad("ABC1211", dateAsString, nonRestrictedTime);
 
         assertTrue(canBeOnTheRoad);
     }
