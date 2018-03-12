@@ -6,12 +6,12 @@ This project has been written in Java using JUnit 5 as testing library.
 
 The main class of this application is `PicoPlacaPredictor` which has the `canBeOnTheRoad(String licensePlateAsString, String date, String time)` method to validate if a license plate can/can't be on the road.
 
-- ***licensePlate*** The method expects a valid license plate, the unique restriction is the last char should be a number, otherwise you'll retrieve an exception.
+- ***licensePlate*** The method expects a valid license plate, the unique restriction is the last char should be a number otherwise you'll retrieve an exception.
 - ***date*** should follow the format dd-MM-yyyy
 - ***time*** should follow the format hh:mm
 
 The test class `PicoPlacaPredictorTest` has some tests to validate how the application works. 
-The test methods names are describing their intention by themselves. For example, it;s pretty obvious that the next method is validating
+The test methods names are describing their intention by themselves. For example, it's pretty obvious that the next method is validating
 if a license plate ending in 1 or 2 can/can't be on the road at a pre-defined time:
 
 ```java
@@ -24,6 +24,15 @@ if a license plate ending in 1 or 2 can/can't be on the road at a pre-defined ti
         assertFalse(canBeOnTheRoad);
     }
 ```
+
+A usage example of the class to validate if a license plate can/can't be on the road is shown here:
+
+```java
+PicoPlacaPredictor picoPlacaPredictor = new PicoPlacaPredictor();
+boolean canBeOnTheRoad = picoPlacaPredictor.canBeOnTheRoad("ABC1211", "12-11-2020", "09:21");
+```
+
+The returned value indicates if the license plate can be on the road in the provided date and time.
 
 In order to trigger the tests, go to the project directory and type:
 
